@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestões de jogos | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Sugestões de jogos</h2>
+            <p>Nesta página você pode cadastrar, consultar, editar e excluir sugestões. Os registros ficam guardados no banco de dados local.</p>
+            <p><a class="link-botao" th:href="@{/sugestoes/nova}">Cadastrar nova sugestão</a></p>
+        </section>
+        <section>
+            <h2>Lista de sugestões cadastradas</h2>
+            <p th:if="${#lists.isEmpty(sugestoes)}">Ainda não existe nenhuma sugestão cadastrada.</p>
+            <table th:if="${not #lists.isEmpty(sugestoes)}">
+                <thead>
+                    <tr>
+                        <th>Jogo sugerido</th>
+                        <th>Quem sugeriu</th>
+                        <th>Gênero</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sugestao : ${sugestoes}">
+                        <td th:text="${sugestao.nomeJogo}">Nome do jogo</td>
+                        <td th:text="${sugestao.usuario.nome}">Nome do usuário</td>
+                        <td th:text="${sugestao.genero.nome}">Gênero</td>
+                        <td th:text="${sugestao.status}">Pendente</td>
+                        <td class="acoes">
+                            <a th:href="@{/sugestoes/ver/{id}(id=${sugestao.id})}">Ver</a>
+                            <a th:href="@{/sugestoes/editar/{id}(id=${sugestao.id})}">Editar</a>
+                            <form th:action="@{/sugestoes/excluir/{id}(id=${sugestao.id})}" method="post" style="display:inline" onsubmit="return confirm('Deseja excluir esta sugestão?');">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #222;
+    margin: 0;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #444;
+    text-align: center;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    background-color: white;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+input, select, textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+button, .link-botao {
+    display: inline-block;
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-decoration: none;
+    font: inherit;
+    font-size: 14px;
+}
+
+button:hover, .link-botao:hover {
+    background-color: #444;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 9px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #eee;
+}
+
+.acoes {
+    white-space: nowrap;
+}
+
+.acoes a, .acoes button {
+    margin: 2px;
+}
+
+.erro {
+    color: #b00020;
+    font-size: 14px;
+}
+
+.aviso {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+    main {
+        margin: 10px;
+        padding: 12px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 6px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${form.id == null ? 'Nova sugestão | Jogos Bacanas' : 'Editar sugestão | Jogos Bacanas'}">Sugestão | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2 th:text="${form.id == null ? 'Sugira um jogo' : 'Editar sugestão'}">Sugira um jogo</h2>
+            <p>Preencha os campos abaixo. Os campos marcados como obrigatórios precisam ser preenchidos.</p>
+            <form th:action="@{/sugestoes/salvar}" th:object="${form}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <p>
+                    <label for="nome">Seu nome:</label><br>
+                    <input type="text" id="nome" th:field="*{nome}" required>
+                    <br><span class="erro" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                </p>
+                <p>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" th:field="*{email}" required>
+                    <br><span class="erro" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </p>
+                <p>
+                    <label for="nascimento">Data de nascimento:</label><br>
+                    <input type="date" id="nascimento" th:field="*{nascimento}" required>
+                    <br><span class="erro" th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"></span>
+                </p>
+                <p>
+                    <label for="nomeJogo">Nome do jogo:</label><br>
+                    <input type="text" id="nomeJogo" th:field="*{nomeJogo}" required>
+                    <br><span class="erro" th:if="${#fields.hasErrors('nomeJogo')}" th:errors="*{nomeJogo}"></span>
+                </p>
+                <p>
+                    <label for="generoId">Gênero:</label><br>
+                    <select id="generoId" th:field="*{generoId}" required>
+                        <option value="">Selecione</option>
+                        <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
+                    </select>
+                    <br><span class="erro" th:if="${#fields.hasErrors('generoId')}" th:errors="*{generoId}"></span>
+                </p>
+                <p>
+                    <label for="descricao">Por que você recomenda esse jogo?</label><br>
+                    <textarea id="descricao" th:field="*{descricao}" rows="4" required></textarea>
+                    <br><span class="erro" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+                </p>
+                <p th:if="${form.id != null}">
+                    <label for="status">Status da análise:</label><br>
+                    <select id="status" th:field="*{status}">
+                        <option th:each="status : ${statusOpcoes}" th:value="${status}" th:text="${status}"></option>
+                    </select>
+                    <br><span class="erro" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
+                </p>
+                <p><button type="submit" th:text="${form.id == null ? 'Enviar sugestão' : 'Salvar alterações'}">Salvar</button></p>
+            </form>
+            <p><a th:href="@{/sugestoes}">Voltar para a lista de sugestões</a></p>
+        </section>
+    </main>
+</body>
+</html>

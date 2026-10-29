@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Lista de jogos</h2>
+            <p>Confira as capas, descrições e algumas informações sobre cada jogo.</p>
+            <ol>
+                <li th:each="jogo : ${jogos}">
+                    <h3 th:text="${jogo.nome}">Nome do jogo</h3>
+                    <img th:src="${jogo.imagemUrl}" th:alt="|Capa de ${jogo.nome}|" width="150">
+                    <p th:text="${jogo.descricao}">Descrição do jogo</p>
+                    <ul>
+                        <li>Desenvolvedora: <span th:text="${jogo.desenvolvedora.nome}">Desenvolvedora</span></li>
+                        <li>Lançamento: <span th:text="${jogo.anoLancamento}">Ano</span></li>
+                        <li>Gênero: <span th:text="${jogo.genero.nome}">Gênero</span></li>
+                        <li>Plataformas: <span th:text="${jogo.plataforma.nome}">Plataformas</span></li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gêneros | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Gêneros de jogos</h2>
+            <p>Os jogos podem misturar mais de um gênero. Veja alguns exemplos:</p>
+            <ol>
+                <li>
+                    <h3>Ação e aventura</h3>
+                    <p>Combina exploração, desafios e combates. Exemplo: Batman: Arkham Knight.</p>
+                </li>
+                <li>
+                    <h3>Aventura narrativa</h3>
+                    <p>Valoriza a história, os diálogos e as escolhas. Exemplo: Life is Strange.</p>
+                </li>
+                <li>
+                    <h3>Mundo aberto</h3>
+                    <p>Permite explorar um cenário amplo com liberdade. Exemplos: Breath of the Wild e Red Dead Redemption 2.</p>
+                </li>
+                <li>
+                    <h3>Clássico</h3>
+                    <p>Jogos que marcaram época e influenciaram outros títulos. Exemplo: Ocarina of Time.</p>
+                </li>
+            </ol>
+            <h2>O que pode variar entre os gêneros?</h2>
+            <ul>
+                <li>O foco pode ser a história.</li>
+                <li>O jogador pode explorar um mundo grande.</li>
+                <li>Os desafios podem envolver combate ou quebra-cabeças.</li>
+                <li>As escolhas podem mudar partes da experiência.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

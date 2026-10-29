@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da sugestão | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Detalhes da sugestão</h2>
+            <table>
+                <tbody>
+                    <tr><th>Jogo sugerido</th><td th:text="${sugestao.nomeJogo}">Jogo</td></tr>
+                    <tr><th>Gênero</th><td th:text="${sugestao.genero.nome}">Gênero</td></tr>
+                    <tr><th>Descrição</th><td class="aviso" th:text="${sugestao.descricao}">Descrição</td></tr>
+                    <tr><th>Nome de quem sugeriu</th><td th:text="${sugestao.usuario.nome}">Nome</td></tr>
+                    <tr><th>E-mail</th><td th:text="${sugestao.usuario.email}">E-mail</td></tr>
+                    <tr><th>Data de nascimento</th><td th:text="${#temporals.format(sugestao.usuario.nascimento, 'dd/MM/yyyy')}">Data</td></tr>
+                    <tr><th>Status</th><td th:text="${sugestao.status}">Pendente</td></tr>
+                    <tr><th>Cadastrada em</th><td th:text="${#temporals.format(sugestao.criadoEm, 'dd/MM/yyyy HH:mm')}">Data e hora</td></tr>
+                </tbody>
+            </table>
+            <p><a class="link-botao" th:href="@{/sugestoes/editar/{id}(id=${sugestao.id})}">Editar</a></p>
+            <p><a th:href="@{/sugestoes}">Voltar para as sugestões</a></p>
+        </section>
+    </main>
+</body>
+</html>

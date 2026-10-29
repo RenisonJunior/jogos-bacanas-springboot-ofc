@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início | Jogos Bacanas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Jogos Bacanas</h1>
+        <p>Jogos que vale a pena conhecer.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/jogos}">Jogos</a>
+        <a th:href="@{/sobre}">Sobre</a>
+        <a th:href="@{/generos}">Gêneros</a>
+        <a th:href="@{/sugestoes}">Sugira um jogo</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Bem-vindo ao Jogos Bacanas</h2>
+            <p>Este site reúne informações simples sobre alguns jogos conhecidos. Aqui você pode conhecer um pouco da história, ver as capas e descobrir quais gêneros combinam mais com seus interesses.</p>
+            <p>A lista inclui aventuras de super-heróis, histórias com escolhas, mundos abertos e jogos clássicos. Use o menu para ver todos os jogos, conhecer o site ou enviar uma sugestão.</p>
+        </section>
+        <section>
+            <h2>Alguns jogos da lista</h2>
+            <ol>
+                <li th:each="jogo : ${jogosDestaque}">
+                    <h3 th:text="${jogo.nome}">Nome do jogo</h3>
+                    <img th:src="${jogo.imagemUrl}" th:alt="|Capa de ${jogo.nome}|" width="140">
+                    <p th:text="${jogo.descricao}">Descrição do jogo</p>
+                </li>
+            </ol>
+            <p><a th:href="@{/jogos}">Ver a lista completa de jogos</a></p>
+        </section>
+    </main>
+</body>
+</html>
